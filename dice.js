@@ -1,25 +1,11 @@
-// function shakeDice(diceSize){
-// 	diceSize = 1;
-// 	let roll = 0;
-// 	if(diceSize < 7){
-// 		roll = Math.floor(Math.random()*7);
-// 	}
-// 	console.log(roll);
-// }
-// shakeDice(4);
-
-
-// function rollDie(diceSize){
-// 	return Math.floor(Math.random()*12);
-// }
-
-
-// let d6 = rollDie(6);
-
 
 function shakeDice(diceSize){
-	let roll=0;
-	roll = Math.floor(Math.random()*12);
+	let shakeValue = Math.floor(Math.random()*diceSize+1);
+	return shakeValue;
+}
+
+function runGame(){
+	let roll = shakeDice(6);
 	switch (roll){
 		case 1:
 		console.log(1);
@@ -78,4 +64,4 @@ function shakeDice(diceSize){
 }
 
 
-shakeDice(4);
+runGame();
