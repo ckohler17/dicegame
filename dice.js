@@ -1,3 +1,4 @@
+let previouslyRolled = [];
 
 function shakeDice(diceSize){
 	let shakeValue = Math.floor(Math.random()*diceSize+1);
@@ -5,9 +6,9 @@ function shakeDice(diceSize){
 }
 
 function runGame(){
-	let previouslyRolled = [];
+	
 	for(let i=0; i<=5;i++){
-		let roll = shakeDice(11);
+		let roll = shakeDice(6);
 		switch (roll){
 			case 1:
 				console.log(1);
@@ -56,6 +57,7 @@ function runGame(){
 		}
 		console.log(previouslyRolled)
 	}
+	return previouslyRolled;
 }
 
 function howManySidesToUse(){
@@ -75,4 +77,16 @@ function howManySidesToUse(){
 
 }
 
+function gameDetermination(){
+	if(previouslyRolled.includes(1,2,3,4,5)){
+		console.log("You Win!");
+	} if(previouslyRolled.includes(2,3,4,5,6)){
+		console.log("You Win!");
+	} else {
+		console.log("Better luck next time.")
+	}
+}
+
 runGame();
+gameDetermination();
+
