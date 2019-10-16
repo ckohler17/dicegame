@@ -44,16 +44,17 @@ function runGame(){
 				break;
 			case 9:
 				console.log("Two Free Rolls");
-				i -= 2;
+				let freeRoll = twoFreeRolls(previouslyRolled);
 				break;
 			case 10:
 				console.log("Remove One Value");
 				previouslyRolled.pop();
+				i--;
 				break;
 			case 11:
 				console.log("Start Over!");
 				previouslyRolled = [];
-				i = 0;
+				i = -1;
 				break;
 		}
 		console.log(previouslyRolled)
@@ -91,6 +92,12 @@ function gameDetermination(previouslyRolled){
 	
 }
 
+function twoFreeRolls(previouslyRolled){
+	let firstRoll = Math.floor(Math.random()*6);
+	let secondRoll = Math.floor(Math.random()*6);
+	previouslyRolled.push(firstRoll);
+	previouslyRolled.push(secondRoll);
+}
 
 runGame();
 
