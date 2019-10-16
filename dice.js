@@ -6,9 +6,8 @@ function shakeDice(diceSize){
 }
 
 function runGame(){
-	
 	for(let i=0; i<=5;i++){
-		let roll = shakeDice(6);
+		let roll = howManySidesToUse();
 		switch (roll){
 			case 1:
 				console.log(1);
@@ -39,12 +38,13 @@ function runGame(){
 				previouslyRolled.push(prompt("What number do you choose?"));
 				break;
 			case 8:
-				console.log("Blank");
-				previouslyRolled.push(undefined);
+				console.log("Roll Again");
+				i--;
 				break;
 			case 9:
-				console.log("Roll Twice!");
-				previouslyRolled.push("Roll Twice");
+				console.log("Two Free Rolls");
+				i--;
+				i--;
 				break;
 			case 10:
 				console.log("Remove One Value");
@@ -53,6 +53,7 @@ function runGame(){
 			case 11:
 				console.log("Start Over!");
 				previouslyRolled.splice(0,6);
+				i = 0;
 				break;
 		}
 		console.log(previouslyRolled)
@@ -61,32 +62,44 @@ function runGame(){
 }
 
 function howManySidesToUse(){
-	if(previouslyRolled.length = 0){
+	if(previouslyRolled.length == 0){
 		diceSize = 6;
-	} else if(previouslyRolled.length = 1){
+	} else if(previouslyRolled.length == 1){
 		diceSize = 7;
-	} else if(previouslyRolled.length = 2){
+	} else if(previouslyRolled.length == 2){
 		diceSize = 8;
-	} else if(previouslyRolled.length = 3){
+	} else if(previouslyRolled.length == 3){
 		diceSize = 9;
-	} else if(previouslyRolled.length = 4){
+	} else if(previouslyRolled.length == 4){
 		diceSize = 10;
 	} else {
 		diceSize = 11;
 	}
-
+	let shakeResult = shakeDice(diceSize);
+	return shakeResult;
 }
 
-function gameDetermination(){
-	if(previouslyRolled.includes(1,2,3,4,5)){
-		console.log("You Win!");
-	} if(previouslyRolled.includes(2,3,4,5,6)){
-		console.log("You Win!");
-	} else {
-		console.log("Better luck next time.")
-	}
-}
+// function gameDetermination(){
+// 	let largeStraightAtOne = [1,2,3,4,5,];
+// 	let largeStraightAtTwo = [2,3,4,5,6,];
+// 	if(Arrays.equal(largeStraightAtTwo, previouslyRolled) || Arrays.equal(largeStraightAtOne, previouslyRolled){
+// 		console.log("You Win!");
+// 	} else {
+// 		console.log("Better luck next time.");
+// 	}
+// }
+
+// function gameDetermination(){
+// 	if(previouslyRolled.includes(1,2,3,4,5)){
+// 		console.log("You Win!");
+// 	} if(previouslyRolled.includes(2,3,4,5,6)){
+// 		console.log("You Win!");
+// 	} else {
+// 		console.log("Better luck next time.")
+// 	}
+// }
 
 runGame();
-gameDetermination();
+// gameDetermination();
+
 
